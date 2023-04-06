@@ -26,15 +26,11 @@ def about():
         </h1>
     '''
 
-@app.route('/ejemplo')
-def example():
-    return redirect(url_for('about'))
-
 @app.route('/login/<name>')
 @app.route('/login')
-def greetings(name=None):
+def login(name=None):
     if name != None:
-        return redirect(f'/dashboard/{name}')
+        return redirect(url_for('dashboard',name=name))
     else:
         return f'<h1 style="font-size: 64px; color: blue">Por favor Ingresa tu nombre en la URL...</h1>'
 
@@ -43,4 +39,4 @@ def greetings(name=None):
 def dashboard(name=None):
     if name is not None:
         return f'<h1>Bienvenido {name} a tu Dashboard!</h1>'
-    return redirect('/login')
+    return redirect(url_for('login'))
