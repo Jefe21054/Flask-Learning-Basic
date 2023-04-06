@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask,redirect,url_for
 
 app = Flask(__name__)
 
@@ -18,13 +18,17 @@ def contact():
         </h1>
     '''
 
-@app.route('/about')
+@app.route('/nosotros')
 def about():
     return '''
         <h1 style="font-size: 64px; color: blue">
             NOSOTROS
         </h1>
     '''
+
+@app.route('/ejemplo')
+def example():
+    return redirect(url_for('about'))
 
 @app.route('/login/<name>')
 @app.route('/login')
@@ -39,5 +43,4 @@ def greetings(name=None):
 def dashboard(name=None):
     if name is not None:
         return f'<h1>Bienvenido {name} a tu Dashboard!</h1>'
-    # return redirect('/login')
-    return redirect('https://duckduckgo.com')
+    return redirect('/login')
