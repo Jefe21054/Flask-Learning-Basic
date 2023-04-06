@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect
 
 app = Flask(__name__)
 
@@ -26,14 +26,18 @@ def about():
         </h1>
     '''
 
-@app.route('/saludo/<name>/<int:sueldo>')
-@app.route('/saludo/<name>')
-@app.route('/saludo')
-def greetings(name=None, sueldo=None):
-    print(name)
+@app.route('/login/<name>')
+@app.route('/login')
+def greetings(name=None):
     if name != None:
-        if sueldo is not None:
-            return f'<h1 style="font-size: 64px; color: blue">Hola {name}, tu sueldo es: {(sueldo)*2}</h1>'
-        return f'<h1 style="font-size: 64px; color: blue">Hola {name}</h1>'
+        return redirect(f'/dashboard/{name}')
     else:
-        return f'<h1 style="font-size: 64px; color: blue">Hola Desconocido</h1>'
+        return f'<h1 style="font-size: 64px; color: blue">Por favor Ingresa tu nombre en la URL...</h1>'
+
+@app.route('/dashboard/<name>')
+@app.route('/dashboard')
+def dashboard(name=None):
+    if name is not None:
+        return f'<h1>Bienvenido {name} a tu Dashboard!</h1>'
+    # return redirect('/login')
+    return redirect('https://duckduckgo.com')
