@@ -28,19 +28,12 @@ def login():
         username = request.form['username']
         password = request.form['password']
         if username and password:
-            return redirect(url_for('dashboard', name=username))
-    return ''' 
-        <form method="POST" style="background-color: #e6e6e6;" >
-        <h3>Ingresa tus datos</h3>
-            <input type="text" name="username" /> <br /> <br />
-            <input type="password" name="password" /> <br /> <br />
-            <button type="submit">Enviar</button>
-        </form>
-    '''
+            return redirect(url_for('dashboard',name=username))
+    return render_template('login.html')
 
 @app.route('/dashboard/<name>')
 @app.route('/dashboard')
 def dashboard(name=None):
     if name is not None:
-        return f'<h1>Bienvenid@ {name} a tu Dashboard!</h1>'
+        return render_template('dashboard.html',username=name)
     return redirect(url_for('login'))
