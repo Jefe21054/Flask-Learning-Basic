@@ -29,8 +29,8 @@ def about():
 def login():
     form = LoginForm()
     if form.validate_on_submit() and request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = form.username.data
+        password = form.password.data
         if username and password:
             session['username'] = username
             return redirect(url_for('dashboard',name=username))

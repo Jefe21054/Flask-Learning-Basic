@@ -3,6 +3,7 @@
 {% block content %}
     <form method="POST" novalidate>
         <h3>Ingresa tus datos</h3>
+        {{ form.csrf_token() }}
         <div>
             {{ form.username.label() }}
             {{ form.username() }}
