@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #64b5f6;
+    box-sizing: border-box;    
+}
+.container {
+    width: 100wh;
+    height: 100vh;
+}
+/* Navigation */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4em;
+}
+.menu-links {
+    height: 80px;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+.menu-links img {
+    margin-left: 500px;
+}
+.menu-links li {
+    list-style: none;
+    margin: 0 2em;
+}
+.menu-links li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+.menu-links li a:hover {
+    color: #1292ee;
+    transition: 300ms;
+}
+
+/* Content */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 80px);
+}
+main h1 {
+    font-size: 64px;
+    color: #fff;
+}
+main h1 span:nth-of-type(1) {
+    color: #1292ee;
+}
+main h1 span:nth-of-type(2) {
+    color: #2a3b47;
+}
+
+/* FORM */
+form {
+    width: 500px;
+    height: 350px;
+    padding: 1em .5em; 
+    box-sizing: border-box;
+    box-shadow: 0px 5px 20px rgba(0,0,0,.5);
+}
+form h3 {
+    text-transform: uppercase;
+    font-family: sans-serif;
+    color: #003566;
+}
+form input {
+    width: 99%;
+    height: 24px;
+}
+form button {
+    width: 100%;
+    height: 33px;
+    background-color: #004585;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: 300ms;
+}
+form button:hover {
+    background-color: #003566;
+}
+
+/* FLASH MESSAGES */
+.messages {
+    padding: 0;
+    height: 48px;
+    box-sizing: border-box;
+}
+.messages li {
+    width: 100%;
+    height: 100%;
+    padding: 0 2em;
+    display: flex;
+    align-items: center;
+}
+.messages .error {
+    background-color: rgb(253, 68, 68);
+    color: #fff;
+}
+.messages .success {
+    background-color: rgb(92, 231, 92);
+    color: #fff;
+}
+.messages .info {
+    background-color: rgb(92, 124, 231);
+    color: #fff;
+}
+
+/* FORMS */
+.input-form {
+    background-color:rgb(92, 124, 231);
+    color: #fff;
+    border: none;
+    outline: none;
+}
+.label-form {
+    color: blue;
+}

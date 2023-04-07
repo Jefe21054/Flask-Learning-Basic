@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- menu -->
+    <div class="container">
+    <nav class="menu">
+        <img src="{{ url_for('static', filename='imgs/flask.png') }}" alt="flask" width="75" height="75">
+        <ul class="menu-links">
+            <li><a href="">Inicio</a></li>
+            <li><a href="">Contacto</a></li>
+            <li><a href="">Nosotros</a></li>
+            <li><a href="">Ingresar</a></li>
+            <li><a href="">Registrarse</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h1>Fundamentos de Flask en <span>ED</span><span>team</span></h1>
+    </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
