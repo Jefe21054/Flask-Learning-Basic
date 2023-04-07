@@ -1,5 +1,5 @@
 from flask import Flask,redirect,url_for,request,render_template, \
-    flash
+    flash,session
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'so-S3cr3t!'
@@ -30,6 +30,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         if username and password:
+            session['username'] = username
             return redirect(url_for('dashboard',name=username))
         flash('Por favor, ingresa correctamente tus datos.','error')
     return render_template('login.html')
@@ -40,4 +41,9 @@ def dashboard(name=None):
     if name is not None:
         flash(f'Bienvenid@ usuario {name}','success')
         return render_template('dashboard.html',username=name)
+    return redirect(url_for('login'))
+
+@app.route('/logout')
+def logout():
+    session.clear()
     return redirect(url_for('login'))

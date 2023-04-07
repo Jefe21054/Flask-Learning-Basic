@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/styles.css') }}">
+</head>
+<body>
+    <!-- menu -->
+    <div class="container">
+    <nav class="menu">
+        <img src="{{ url_for('static', filename='imgs/flask.png') }}" alt="flask" width="75" height="75">
+        <ul class="menu-links">
+            <li><a href="{{ url_for('index') }}">Inicio</a></li>
+            <li><a href="{{ url_for('contact') }}">Contacto</a></li>
+            <li><a href="{{ url_for('about') }}">Nosotros</a></li>
+        
+            {% if session.username %}
+                <li><a href="#">{{ session.username }}</a></li>
+                <li><a href="{{ url_for('logout') }}">Cerrar Sesion</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">Ingresar</a></li>
+            <li><a href="">Registrarse</a></li>
+            {% endif %}
+        
+        </ul>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <ul class="messages">
+                {% for category,message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <main>
+        {% block content %}
+
+        {% endblock content %}
+    </main>
+    </div>
+    <!-- <script src="{{ url_for('static', filename='js/main.js') }}"></script> -->
+</body>
+</html>
