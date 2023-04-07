@@ -1,5 +1,5 @@
-from flask import Flask,redirect,url_for,request,render_template, \
-    flash,session
+from flask import Flask,redirect,url_for,request,\
+    render_template,flash,session
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'so-S3cr3t!'
