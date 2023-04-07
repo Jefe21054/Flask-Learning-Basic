@@ -25,6 +25,17 @@
                 {% endif %}
             </ul>
         </nav>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li class="success">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
         <main>
             <h1>Bienvenid@ {{ username }} a tu Dashboard!</h1>
         </main>

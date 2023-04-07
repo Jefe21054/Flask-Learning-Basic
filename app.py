@@ -1,6 +1,8 @@
-from flask import Flask,redirect,url_for,request,render_template
+from flask import Flask,redirect,url_for,request,render_template, \
+    flash
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'so-S3cr3t!'
 
 @app.route('/')
 def index():
@@ -29,11 +31,13 @@ def login():
         password = request.form['password']
         if username and password:
             return redirect(url_for('dashboard',name=username))
+        flash('Por favor, ingresa correctamente tus datos.','error')
     return render_template('login.html')
 
 @app.route('/dashboard/<name>')
 @app.route('/dashboard')
 def dashboard(name=None):
     if name is not None:
+        flash(f'Bienvenid@ usuario {name}','success')
         return render_template('dashboard.html',username=name)
     return redirect(url_for('login'))

@@ -20,6 +20,17 @@
                 <li><a href="">Registrarse</a></li>
             </ul>
         </nav>
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for category,message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
         <main>
             <form method="POST">
                 <h3>Ingresa tus datos</h3>
