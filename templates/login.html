@@ -1,10 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form method="POST">
+    <form method="POST" novalidate>
         <h3>Ingresa tus datos</h3>
-            <input type="text" name="username" /> <br /> <br />
-            <input type="password" name="password" /> <br /> <br />
-        <button type="submit">Enviar</button>
+        <div>
+            {{ form.username.label() }}
+            {{ form.username() }}
+            {% for error in form.username.errors %}
+                <li style="color: red;">{{ error }}</li>
+            {% endfor %}
+        </div>
+        <br>
+        <div>
+            {{ form.password.label() }}
+            {{ form.password() }}
+            {% for error in form.password.errors %}
+                <li style="color: red;">{{ error }}</li>
+            {% endfor %}
+        </div>
+        <br>
+        <div>
+            {{ form.submit() }}
+        </div>
     </form>
 {% endblock content %}
