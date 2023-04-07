@@ -5,16 +5,16 @@
         <h3>Ingresa tus datos</h3>
         {{ form.csrf_token() }}
         <div>
-            {{ form.username.label() }}
-            {{ form.username() }}
+            {{ form.username.label(class_="label-form") }}
+            {{ form.username(class_="input-form") }}
             {% for error in form.username.errors %}
                 <li style="color: red;">{{ error }}</li>
             {% endfor %}
         </div>
         <br>
         <div>
-            {{ form.password.label() }}
-            {{ form.password() }}
+            {{ form.password.label(class_="label-form") }}
+            {{ form.password(class_="input-form") }}
             {% for error in form.password.errors %}
                 <li style="color: red;">{{ error }}</li>
             {% endfor %}
